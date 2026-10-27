@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="kbmvmMz6Lc2hgvTju_d-CQ6aPR5iL1I-7lHf-TLtC88" />
+
+    
+    <link rel="canonical" href="https://typing-speedtest.pages.dev/">
+<!-- Primary SEO Meta Tags -->
+    <title>Typist — Free Typing Speed Test &amp; Practice</title>
+    <meta name="title" content="Typist — Minimalist Typing Speed Test & Relaxing Practice">
+    <meta name="description" content="Improve your typing speed (WPM) and accuracy with Typist. Featuring relaxing passages, normal and advanced practice modes, mechanical keyboard sound effects, and live real-time metrics.">
+    <meta name="keywords" content="typing test, typing speed test, wpm test, mechanical keyboard sound, typing practice, relaxing typing test, touch typing practice, typing accuracy online">
+    <meta name="author" content="Typist Team">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://typing-speedtest.pages.dev/">
+    
+    <meta property="og:title" content="Typist — Minimalist Typing Speed Test & Relaxing Practice">
+    <meta property="og:description" content="Master typing with relaxing passages, mechanical key audio feedback, real-time WPM stats, and clean minimalist design.">
+    
+
+    <!-- Twitter SEO -->
+    <meta property="twitter:card" content="summary_large_image">
+    
+    <meta property="twitter:title" content="Typist — Minimalist Typing Speed Test & Relaxing Practice">
+    <meta property="twitter:description" content="Master typing with relaxing passages, mechanical key audio feedback, and real-time WPM stats.">
+    
+
+    <!-- JSON-LD Structured Data Schema for Search Engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Typist",
+      "url": "https://typing-speedtest.pages.dev/",
+      "description": "A sleek, minimalist typing speed test application to practice touch typing, improve WPM, and track accuracy with satisfying audio feedback.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0c0e14;
+            --surface: #141722;
+            --border: rgba(255, 255, 255, 0.07);
+            --border-hover: rgba(255, 255, 255, 0.16);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --text-muted: #64748b;
+            --text-faint: #334155;
+            --accent: #84cc16;
+            --accent-soft: rgba(132, 204, 22, 0.14);
+            --accent-glow: rgba(132, 204, 22, 0.25);
+            --error: #fb7185;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 18px;
+            --shadow-pop: 0 30px 60px -12px rgba(0, 0, 0, 0.8);
+            --glass-bg: rgba(20, 23, 34, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            height: 100vh;
+            height: 100dvh;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* 1. Header Navigation */
+        header {
+            height: 54px;
+            width: 100%;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.75rem;
+            gap: 1rem;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            user-select: none;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+            margin-left: 1px;
+        }
+
+        /* Centered Stats Bar */
+        .header-stats {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            background: var(--bg);
+            padding: 0.3rem 1.1rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-inline {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.775rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+        }
+
+        .stat-inline .value {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .stat-inline .value.accent {
+            color: var(--accent);
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 12px;
+            background: var(--border);
+        }
+
+        /* Controls Section */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .select-dropdown {
+            background: var(--bg);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 0.35rem 0.65rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.15s ease;
+        }
+
+        .select-dropdown:hover, .select-dropdown:focus {
+            border-color: var(--accent);
+        }
+
+        .icon-btn {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 0.35rem 0.65rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            user-select: none;
+        }
+
+        .icon-btn:hover {
+            color: var(--text-main);
+            border-color: var(--border-hover);
+        }
+
+        .icon-btn.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        /* Workspace Layout */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        main {
+            flex: 1 1 auto;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-workspace {
+            width: min(92%, 1440px);
+            margin: 0 auto;
+            flex: 1 1 auto;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.75rem, 2vh, 1.5rem);
+            padding: clamp(0.8rem, 2vh, 1.5rem) 0;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 3px;
+            background: var(--border);
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.12s linear;
+        }
+
+        /* Typing Canvas Area */
+        .typing-wrapper {
+            flex: 1;
+            position: relative;
+            background: transparent;
+            padding: 1.5rem 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            overflow: hidden;
+            flex: 1 1 auto;
+            min-height: 0;
+            max-height: 100%;
+            cursor: text;
+            overscroll-behavior: none;
+        }
+
+        .typing-wrapper:focus-within {
+            outline: none;
+        }
+
+        .typing-passage {
+            font-family: var(--font-mono);
+            font-size: clamp(1.2rem, 2.05vw, 1.8rem);
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+            color: var(--text-muted);
+            white-space: pre-wrap;
+            word-break: break-word;
+            user-select: none;
+            width: 100%;
+        }
+
+        .word {
+            display: inline-block;
+            border-bottom: 2px solid var(--text-faint);
+            margin-right: 0.45em;
+            margin-bottom: 0.35em;
+            padding-bottom: 2px;
+            transition: border-color 0.15s ease;
+        }
+
+        .word.active-word { border-bottom-color: var(--accent); }
+        .word.correct-word { border-bottom-color: rgba(132, 204, 22, 0.4); }
+        .word.error-word { border-bottom-color: var(--error); }
+
+        .char {
+            position: relative;
+            color: var(--text-dim);
+            transition: color 0.05s ease;
+            border-radius: 2px;
+        }
+
+        .char.correct { color: var(--text-main); }
+        .char.incorrect { color: var(--error); }
+
+        .char.current::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            width: 2.5px;
+            height: 1.2em;
+            background-color: var(--accent);
+            animation: blink 1s infinite;
+            border-radius: 1px;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .focus-prompt {
+            position: absolute;
+            inset: 0;
+            background: rgba(12, 14, 20, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            z-index: 5;
+            cursor: pointer;
+            border-radius: var(--radius-md);
+        }
+
+        .focus-prompt.hidden { opacity: 0; pointer-events: none; }
+
+        .focus-prompt p { font-size: 1.05rem; font-weight: 500; color: var(--text-dim); }
+        .focus-prompt kbd {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .bottom-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.5rem;
+        }
+
+        .hint-text {
+            font-size: 0.775rem;
+            color: var(--text-dim);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hint-text kbd {
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+        }
+
+        /* Results Modal */
+        .results-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(8, 10, 16, 0.7);
+            backdrop-filter: blur(18px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .results-overlay.visible { opacity: 1; pointer-events: auto; }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
+            width: 90%;
+            max-width: 480px;
+            box-shadow: var(--shadow-pop);
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .card-head { display: flex; justify-content: space-between; align-items: flex-end; }
+        .card-head-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--text-dim); }
+        .card-head-tag { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); background: var(--accent-soft); padding: 0.2rem 0.6rem; border-radius: 99px; }
+
+        .hero-metric { display: flex; align-items: baseline; gap: 0.75rem; }
+        .hero-value { font-family: var(--font-mono); font-size: 4.5rem; font-weight: 700; line-height: 1; color: var(--accent); }
+        .hero-unit { font-size: 1rem; font-weight: 600; text-transform: uppercase; color: var(--text-dim); }
+
+        .metrics-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+        .metric-item { display: flex; flex-direction: column; gap: 0.25rem; }
+        .metric-item .lbl { font-size: 0.725rem; font-weight: 600; text-transform: uppercase; color: var(--text-dim); }
+        .metric-item .val { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 600; color: var(--text-main); }
+
+        .glass-action-btn {
+            background: var(--accent);
+            color: #0c0e14;
+            border: none;
+            padding: 0.85rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.925rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+
+        body > footer {
+            width: 100%;
+            border-top: 1px solid var(--border);
+            background: #0a0c12;
+            padding: 0.8rem 1.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        body > footer > div {
+            max-width: 72rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        body > footer nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        body > footer a { color: var(--text-dim); text-decoration: none; }
+        body > footer a:hover { color: var(--accent); }
+        @media (max-width: 680px) {
+            body > footer > div { flex-direction: column; }
+        }
+
+        /* Demo-only ad placements. Replace placeholders with approved AdSense code after approval. */
+        .demo-ad-banner {
+            width: min(100% - 2rem, 970px);
+            min-height: 64px;
+            margin: 0.5rem auto;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            border: 1px dashed rgba(148, 163, 184, 0.28);
+            border-radius: var(--radius-md);
+            background: rgba(20, 23, 34, 0.55);
+            color: var(--text-muted);
+            text-align: left;
+        }
+        .demo-ad-label {
+            align-self: flex-start;
+            font-size: 0.58rem;
+            line-height: 1;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            border-radius: 3px;
+            padding: 0.22rem 0.3rem;
+            white-space: nowrap;
+        }
+        .demo-ad-copy { display: flex; flex-direction: column; gap: 0.25rem; }
+        .demo-ad-copy strong { color: var(--text-dim); font-size: 0.78rem; font-weight: 600; }
+        .demo-ad-copy span { font-size: 0.68rem; }
+        .demo-ad-cta { margin-left: auto; font-size: 0.7rem; color: var(--accent); white-space: nowrap; }
+        .demo-native-ad {
+            padding: 0.85rem 1rem;
+            border: 1px dashed rgba(148, 163, 184, 0.3);
+            border-radius: var(--radius-md);
+            background: rgba(12, 14, 20, 0.55);
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .demo-native-ad .demo-ad-label { align-self: flex-start; }
+        .demo-native-ad strong { font-size: 0.85rem; color: var(--text-dim); }
+        .demo-native-ad p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+
+        .header-stats { flex-shrink: 0; }
+        .bottom-bar { flex-shrink: 0; }
+        body > footer { flex-shrink: 0; }
+
+        @media (max-width: 900px) {
+            header { padding: 0 1rem; }
+            .header-stats { gap: 0.65rem; padding: 0.3rem 0.65rem; }
+            .stat-inline { font-size: 0.68rem; }
+            .stat-inline .value { font-size: 0.82rem; }
+        }
+        @media (max-width: 680px) {
+            header { height: auto; min-height: 58px; flex-wrap: wrap; padding: 0.65rem 0.85rem; }
+            .header-stats { order: 3; display: flex; width: 100%; justify-content: center; }
+            .header-controls { gap: 0.35rem; }
+            .select-dropdown { padding: 0.35rem; font-size: 0.75rem; }
+            .icon-btn { padding: 0.35rem 0.5rem; }
+            .app-workspace { width: 92%; }
+            .typing-wrapper { padding: 0.75rem 0.15rem; }
+            .demo-ad-banner { min-height: 52px; margin: 0.25rem auto; padding: 0.45rem 0.6rem; gap: 0.5rem; }
+            .demo-ad-copy span { display: none; }
+            .demo-ad-cta { display: none; }
+            .typing-passage { font-size: clamp(1.05rem, 4.5vw, 1.35rem); line-height: 2; }
+            .hint-text { gap: 0.5rem; flex-wrap: wrap; font-size: 0.7rem; }
+            body > footer { padding: 0.7rem 0.8rem; }
+        }
+        @media (max-height: 620px) {
+            .app-workspace { gap: 0.45rem; padding: 0.45rem 0; }
+            .typing-passage { line-height: 1.55; }
+            .demo-ad-banner { min-height: 44px; margin: 0.2rem auto; padding: 0.35rem 0.6rem; }
+            body > footer { padding-top: 0.35rem; padding-bottom: 0.35rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body class="bg-[#0c0e14] text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <h1 class="sr-only">Typist — Minimalist Typing Speed Test & Practice</h1>
+
+    <!-- 1. Navigation Header -->
+    <header role="banner">
+        <a href="/" class="logo" aria-label="Typist Homepage">
+            typist<span>.</span>
+        </a>
+
+        <div class="header-stats" role="region" aria-label="Live Typing Statistics">
+            <div class="stat-inline"><span>WPM:</span><span class="value accent" id="statWpm">0</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-inline"><span>ACC:</span><span class="value" id="statAcc">100%</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-inline"><span>ERR:</span><span class="value" id="statMistakes">0</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat-inline"><span>TIME:</span><span class="value" id="statTime">01:00</span></div>
+        </div>
+
+        <nav class="header-controls" aria-label="Typing Controls">
+            <select id="difficultySelect" class="select-dropdown" title="Select Difficulty">
+                <option value="normal">Normal</option>
+                <option value="advance">Advance</option>
+            </select>
+
+            <select id="durationSelect" class="select-dropdown" title="Select Duration">
+                <option value="60">60s</option>
+                <option value="120">120s</option>
+                <option value="180">180s</option>
+            </select>
+
+            <button id="soundToggle" class="icon-btn active" title="Toggle Keyboard Audio">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+                <span id="soundStatus">On</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 2. Main Practice Workspace -->
+    <main role="main">
+        <div class="app-workspace">
+            <div class="progress-track" aria-hidden="true">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="typing-wrapper" id="typingWrapper" tabindex="0" role="textbox" aria-label="Typing Practice Area">
+                <div class="focus-prompt" id="focusPrompt">
+                    <p>Small steps. Steady rhythm. Better typing.</p>
+                </div>
+                <div class="typing-passage" id="typingPassage">Loading passages...</div>
+            </div>
+
+            <footer class="bottom-bar">
+                <div class="hint-text">
+                    <span>Type anywhere to begin</span>
+                    <span><kbd>Esc</kbd> to reset</span>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <!-- 3. Results Popup Modal -->
+    <div class="results-overlay" id="resultsOverlay" role="dialog" aria-modal="true">
+        <div class="glass-card">
+            <div class="card-head">
+                <h2 class="card-head-title">Test Result</h2>
+                <span class="card-head-tag" id="resMode">Easy • 60s</span>
+            </div>
+            <div class="hero-metric">
+                <span class="hero-value" id="resWpm">0</span>
+                <span class="hero-unit">Words / Min</span>
+            </div>
+            <div class="metrics-flow">
+                <div class="metric-item"><span class="lbl">Accuracy</span><span class="val" id="resAcc">100%</span></div>
+                <div class="metric-item"><span class="lbl">Correct Words</span><span class="val" id="resWords">0</span></div>
+                <div class="metric-item"><span class="lbl">Mistakes</span><span class="val" id="resMistakes">0</span></div>
+            </div>
+            <!-- DEMO NATIVE AD SLOT: replace with an approved AdSense unit only when ready. -->
+            <aside class="demo-native-ad" aria-label="Advertisement demo">
+                <span class="demo-ad-label">Sponsored · Demo</span>
+                <strong>Keep improving your typing skills</strong>
+                <p>This is a non-clickable design preview for a future native ad placement.</p>
+            </aside>
+            <button class="glass-action-btn" id="resRestartBtn">Try Again</button>
+        </div>
+    </div>
+
+    <!-- DEMO AD SLOT: visual placeholder only; this is not a live Google AdSense ad.
+         After AdSense approval, replace this block with the official responsive ad unit code
+         and your real ca-pub-... publisher ID / data-ad-slot. Never click your own live ads. -->
+    <aside class="demo-ad-banner" aria-label="Advertisement demo">
+        <span class="demo-ad-label">Ad · Demo</span>
+        <div class="demo-ad-copy">
+            <strong>Responsive banner advertisement</strong>
+            <span>Reserved placement for an approved Google AdSense display ad.</span>
+        </div>
+        <span class="demo-ad-cta" aria-hidden="true">728 × 60 / responsive</span>
+    </aside>
+
+    <!-- 4. Global Footer for AdSense & SEO Policy Pages -->
+    <footer class="w-full border-t border-slate-800/80 bg-[#0a0c12] py-4 px-6 text-center text-xs text-slate-500 mt-auto">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <p>&copy; 2026 Typist. All rights reserved.</p>
+            <nav class="flex flex-wrap justify-center items-center gap-4 text-slate-400">
+                <a href="/about_us_page.html" class="hover:text-lime-400 transition-colors">About Us</a>
+                <span class="text-slate-700">•</span>
+                <a href="/privacy_policy_page.html" class="hover:text-lime-400 transition-colors">Privacy Policy</a>
+                <span class="text-slate-700">•</span>
+                <a href="/terms_of_service_page.html" class="hover:text-lime-400 transition-colors">Terms of Service</a>
+                <a href="/disclaimer_page.html" class="hover:text-lime-400 transition-colors">Disclaimer</a>
+                <span class="text-slate-700">•</span>
+                <a href="/contact_us_page.html" class="hover:text-lime-400 transition-colors">Contact Us</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        const passagesData = { normal: null, advance: null };
+        const passageLoadPromises = { normal: null, advance: null };
+        const MAX_PASSAGES_PER_SCREEN = 10;
+        const passageDecks = { normal: [], advance: [] };
+        let charSpans = [];
+        let wordElements = [];
+        let state = {
+            difficulty: 'normal',
+            duration: 60,
+            timeLeft: 60,
+            timerId: null,
+            isStarted: false,
+            isFinished: false,
+            passageText: '',
+            currentIndex: 0,
+            currentWordIndex: 0,
+            wordStartIndices: [],
+            mistakes: 0,
+            correctChars: 0,
+            totalTyped: 0,
+            accumulatedCorrectChars: 0,
+            accumulatedTotalTyped: 0,
+            accumulatedMistakes: 0,
+            accumulatedCorrectWords: 0,
+            startTime: null,
+            soundEnabled: true,
+            audioCtx: null,
+            loadRequestId: 0
+        };
+
+        const typingWrapper = document.getElementById('typingWrapper');
+        const typingPassage = document.getElementById('typingPassage');
+        const focusPrompt = document.getElementById('focusPrompt');
+        const statWpm = document.getElementById('statWpm');
+        const statAcc = document.getElementById('statAcc');
+        const statMistakes = document.getElementById('statMistakes');
+        const statTime = document.getElementById('statTime');
+        const progressFill = document.getElementById('progressFill');
+        const soundToggle = document.getElementById('soundToggle');
+        const soundStatus = document.getElementById('soundStatus');
+        const resultsOverlay = document.getElementById('resultsOverlay');
+        const resWpm = document.getElementById('resWpm');
+        const resAcc = document.getElementById('resAcc');
+        const resWords = document.getElementById('resWords');
+        const resMistakes = document.getElementById('resMistakes');
+        const resMode = document.getElementById('resMode');
+        const resRestartBtn = document.getElementById('resRestartBtn');
+        const difficultySelect = document.getElementById('difficultySelect');
+        const durationSelect = document.getElementById('durationSelect');
+
+        const encouragementMessages = [
+            'Challenge: keep your accuracy above 95% this round.',
+            'Tiny challenge: type smoothly for the first 10 seconds.',
+            'Find your rhythm. Speed will follow.',
+            'Today’s goal: fewer mistakes, not just faster fingers.',
+            'One clean sentence at a time. You’ve got this.',
+            'Challenge: stay relaxed and keep your eyes on the next word.',
+            'Build consistency now; speed comes with practice.',
+            'Beat your last rhythm, one keystroke at a time.',
+            'Take a breath. Sit comfortably. Start strong.',
+            'Challenge: finish this round with calm, accurate typing.',
+            'Progress is practice repeated. Let’s go.',
+            'No rush—aim for smooth, steady keystrokes.'
+        ];
+        let lastEncouragement = -1;
+        function encouragementMessage() {
+            if (encouragementMessages.length < 2) return encouragementMessages[0] || 'Ready when you are.';
+            let next;
+            do { next = Math.floor(Math.random() * encouragementMessages.length); }
+            while (next === lastEncouragement);
+            lastEncouragement = next;
+            return encouragementMessages[next];
+        }
+
+        async function fetchPassages(difficulty = state.difficulty) {
+            const requestId = ++state.loadRequestId;
+            const fileName = difficulty === 'advance' ? 'advance.json' : 'normal.json';
+            const promptText = focusPrompt.querySelector('p');
+
+            if (!passagesData[difficulty]) {
+                typingPassage.replaceChildren();
+                promptText.textContent = 'Loading practice text...';
+                focusPrompt.classList.remove('hidden');
+            }
+
+            try {
+                if (!passageLoadPromises[difficulty]) {
+                    passageLoadPromises[difficulty] = fetch(new URL(fileName, document.baseURI), {
+                        headers: { Accept: 'application/json' }
+                    }).then(async response => {
+                        if (!response.ok) {
+                            throw new Error(`Request failed (${response.status}) for ${fileName}`);
+                        }
+
+                        const data = await response.json();
+                        if (!Array.isArray(data) || data.length === 0 ||
+                            data.some(line => typeof line !== 'string' || !line.trim())) {
+                            throw new Error(`${fileName} must contain a non-empty array of text strings`);
+                        }
+
+                        return data.map(line => line.trim().replace(/\s+/g, ' '));
+                    }).catch(error => {
+                        passageLoadPromises[difficulty] = null;
+                        throw error;
+                    });
+                }
+
+                passagesData[difficulty] = await passageLoadPromises[difficulty];
+                if (requestId !== state.loadRequestId || difficulty !== state.difficulty) return;
+                promptText.textContent = encouragementMessage();
+                resetTest();
+            } catch (error) {
+                if (requestId !== state.loadRequestId || difficulty !== state.difficulty) return;
+                state.passageText = '';
+                typingPassage.replaceChildren();
+                promptText.textContent = 'Practice text could not be loaded. Check the server or JSON files, then click here to retry.';
+                focusPrompt.classList.remove('hidden');
+                console.error(`Failed to load ${fileName}:`, error);
+            }
+        }
+
+        function initAudio() {
+            if (!state.audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) state.audioCtx = new AudioContext();
+            }
+            if (state.audioCtx && state.audioCtx.state === 'suspended') {
+                state.audioCtx.resume();
+            }
+        }
+
+        function playKeySound(keyType = 'normal') {
+            if (!state.soundEnabled) return;
+            initAudio();
+            if (!state.audioCtx) return;
+
+            try {
+                const ctx = state.audioCtx;
+                const now = ctx.currentTime;
+                const clickOsc = ctx.createOscillator();
+                const clickGain = ctx.createGain();
+
+                let startFreq = keyType === 'space' ? 800 : (keyType === 'backspace' ? 1600 : 2200);
+                let endFreq = keyType === 'space' ? 150 : (keyType === 'backspace' ? 300 : 400);
+
+                clickOsc.type = 'triangle';
+                clickOsc.frequency.setValueAtTime(startFreq, now);
+                clickOsc.frequency.exponentialRampToValueAtTime(endFreq, now + 0.015);
+                clickGain.gain.setValueAtTime(keyType === 'space' ? 0.35 : 0.22, now);
+                clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
+
+                clickOsc.connect(clickGain);
+                clickGain.connect(ctx.destination);
+                clickOsc.start(now);
+                clickOsc.stop(now + 0.025);
+            } catch (e) {}
+        }
+
+        function estimatePassageCount(pool) {
+            // Estimate how many short passages fit in the visible typing area.
+            // The DOM fit-check below is the final safeguard against overflow.
+            const styles = getComputedStyle(typingPassage);
+            const fontSize = parseFloat(styles.fontSize) || 20;
+            const lineHeight = parseFloat(styles.lineHeight) || fontSize * 1.8;
+            const usableWidth = Math.max(typingWrapper.clientWidth - 24, 180);
+            const usableHeight = Math.max(typingWrapper.clientHeight - 20, lineHeight * 2);
+            const charsPerLine = Math.max(18, Math.floor(usableWidth / (fontSize * 0.62)));
+            const visibleLines = Math.max(2, Math.floor(usableHeight / lineHeight));
+            const estimatedCapacity = charsPerLine * visibleLines * 0.72;
+            const averageLength = pool.length
+                ? pool.reduce((sum, item) => sum + Math.min(item.length, 160), 0) / pool.length
+                : 100;
+            return Math.max(1, Math.min(MAX_PASSAGES_PER_SCREEN, Math.floor(estimatedCapacity / Math.max(averageLength, 1))));
+        }
+
+        function loadNewPassage(appendMode = false) {
+            const pool = passagesData[state.difficulty] || [];
+            if (!Array.isArray(pool) || pool.length === 0) {
+                state.passageText = '';
+                typingPassage.replaceChildren();
+                charSpans = [];
+                wordElements = [];
+                return;
+            }
+
+            if (!passageDecks[state.difficulty] || passageDecks[state.difficulty].length === 0) {
+                passageDecks[state.difficulty] = pool.map((_, index) => index);
+                for (let i = passageDecks[state.difficulty].length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [passageDecks[state.difficulty][i], passageDecks[state.difficulty][j]] = [passageDecks[state.difficulty][j], passageDecks[state.difficulty][i]];
+                }
+            }
+
+            const deck = passageDecks[state.difficulty];
+            const selectedIndices = [];
+            const pageCount = Math.min(estimatePassageCount(pool), pool.length, deck.length);
+            for (let i = 0; i < pageCount; i++) selectedIndices.push(deck.pop());
+
+            if (appendMode) {
+                // Capture the completed page before rendering its replacement.
+                state.accumulatedCorrectChars += state.correctChars;
+                state.accumulatedTotalTyped += state.totalTyped;
+                state.accumulatedMistakes += state.mistakes;
+                state.accumulatedCorrectWords += countCorrectWordsOnCurrentPage();
+                state.correctChars = 0;
+                state.totalTyped = 0;
+                state.mistakes = 0;
+                state.currentIndex = 0;
+            }
+
+            state.passageText = selectedIndices.map(index => pool[index]).join(' ');
+            renderPassageWithUnderlines();
+
+            // If the estimate was optimistic (font loading / unusual viewport), remove passages
+            // until the entire prompt fits. Return removed items to the deck so none are lost.
+            while (selectedIndices.length > 1 && typingWrapper.clientHeight > 0 &&
+                   typingPassage.scrollHeight > typingWrapper.clientHeight + 2) {
+                const removedIndex = selectedIndices.pop();
+                deck.push(removedIndex);
+                state.passageText = selectedIndices.map(index => pool[index]).join(' ');
+                renderPassageWithUnderlines();
+            }
+            typingWrapper.scrollTop = 0;
+            updateWordUnderlineStates();
+        }
+
+        function renderPassageWithUnderlines() {
+            typingPassage.replaceChildren();
+            charSpans = [];
+            wordElements = [];
+            if (!state.passageText) return;
+
+            const words = state.passageText.split(' ');
+            let globalCharIndex = 0;
+            state.wordStartIndices = [];
+            state.currentWordIndex = 0;
+
+            words.forEach((wordStr, wordIdx) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'word';
+                wordSpan.dataset.wordIndex = wordIdx;
+                if (wordIdx === 0) wordSpan.classList.add('active-word');
+                state.wordStartIndices.push(globalCharIndex);
+
+                for (let i = 0; i < wordStr.length; i++) {
+                    const charSpan = document.createElement('span');
+                    charSpan.className = 'char';
+                    charSpan.dataset.index = globalCharIndex;
+                    if (globalCharIndex === 0) charSpan.classList.add('current');
+                    charSpan.textContent = wordStr[i];
+                    wordSpan.appendChild(charSpan);
+                    globalCharIndex++;
+                }
+
+                if (wordIdx < words.length - 1) {
+                    const spaceSpan = document.createElement('span');
+                    spaceSpan.className = 'char space-char';
+                    spaceSpan.dataset.index = globalCharIndex;
+                    spaceSpan.textContent = '\u00a0';
+                    wordSpan.appendChild(spaceSpan);
+                    globalCharIndex++;
+                }
+
+                typingPassage.appendChild(wordSpan);
+                wordElements.push(wordSpan);
+            });
+
+            charSpans = Array.from(typingPassage.querySelectorAll('.char'));
+            typingWrapper.scrollTop = 0;
+        }
+
+        function updateWordUnderlineStates() {
+            // Only recalculate the active word and the word just completed.
+            // This avoids rescanning every character on every keypress.
+            const indices = new Set([state.currentWordIndex, state.currentWordIndex - 1]);
+            indices.forEach(idx => {
+                if (idx < 0 || idx >= wordElements.length) return;
+                const word = wordElements[idx];
+                const chars = word.querySelectorAll('.char:not(.space-char)');
+                let hasError = false;
+                let typedChars = 0;
+                chars.forEach(char => {
+                    if (char.classList.contains('incorrect')) hasError = true;
+                    if (char.classList.contains('correct')) typedChars++;
+                });
+                word.classList.remove('active-word', 'correct-word', 'error-word');
+                if (idx === state.currentWordIndex) word.classList.add('active-word');
+                else if (hasError) word.classList.add('error-word');
+                else if (chars.length > 0 && typedChars === chars.length) word.classList.add('correct-word');
+            });
+        }
+
+        function resetTest(loadPassage = true) {
+            clearInterval(state.timerId);
+            state.timerId = null;
+            state.isStarted = false;
+            state.isFinished = false;
+            state.currentIndex = 0;
+            state.currentWordIndex = 0;
+            state.mistakes = 0;
+            state.correctChars = 0;
+            state.totalTyped = 0;
+            state.accumulatedCorrectChars = 0;
+            state.accumulatedTotalTyped = 0;
+            state.accumulatedMistakes = 0;
+            state.accumulatedCorrectWords = 0;
+            state.timeLeft = state.duration;
+            state.startTime = null;
+
+            statWpm.textContent = '0';
+            statAcc.textContent = '100%';
+            statMistakes.textContent = '0';
+            formatTimeDisplay();
+            progressFill.style.width = '0%';
+
+            resultsOverlay.classList.remove('visible');
+            focusPrompt.querySelector('p').textContent = encouragementMessage();
+            focusPrompt.classList.remove('hidden');
+            if (loadPassage && Array.isArray(passagesData[state.difficulty]) && passagesData[state.difficulty].length) {
+                loadNewPassage(false);
+            } else {
+                state.passageText = '';
+                typingPassage.replaceChildren();
+            }
+        }
+
+        function formatTimeDisplay() {
+            const mins = Math.floor(state.timeLeft / 60);
+            const secs = state.timeLeft % 60;
+            statTime.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (state.isStarted) return;
+            state.isStarted = true;
+            state.startTime = Date.now();
+            focusPrompt.classList.add('hidden');
+
+            const totalDuration = state.duration;
+            const startTimeStamp = Date.now();
+
+            state.timerId = setInterval(() => {
+                const elapsedSeconds = Math.floor((Date.now() - startTimeStamp) / 1000);
+                state.timeLeft = Math.max(0, totalDuration - elapsedSeconds);
+                formatTimeDisplay();
+                updateLiveStats();
+                if (state.timeLeft <= 0) finishTest();
+            }, 250);
+        }
+
+        function updateLiveStats() {
+            if (!state.startTime) return;
+            const elapsedMinutes = (Date.now() - state.startTime) / 60000;
+            const totalCorrect = state.accumulatedCorrectChars + state.correctChars;
+            const totalTypedAll = state.accumulatedTotalTyped + state.totalTyped;
+            const totalMistakesAll = state.accumulatedMistakes + state.mistakes;
+
+            if (elapsedMinutes > 0) {
+                const wpm = Math.round((totalCorrect / 5) / elapsedMinutes);
+                statWpm.textContent = Math.max(0, wpm);
+            }
+
+            const accuracy = totalTypedAll > 0 ? Math.round((totalCorrect / totalTypedAll) * 100) : 100;
+            statAcc.textContent = `${Math.max(0, accuracy)}%`;
+            statMistakes.textContent = totalMistakesAll;
+
+            const progress = (state.currentIndex / (state.passageText ? state.passageText.length : 1)) * 100;
+            progressFill.style.width = `${Math.min(100, progress)}%`;
+        }
+
+        function countCorrectWordsOnCurrentPage() {
+            let count = 0;
+            typingPassage.querySelectorAll('.word').forEach(word => {
+                const chars = Array.from(word.querySelectorAll('.char')).filter(char => !char.classList.contains('space-char'));
+                if (chars.length > 0 && chars.every(char => char.classList.contains('correct'))) count++;
+            });
+            return count;
+        }
+
+        function finishTest() {
+            if (state.isFinished) return;
+            state.isFinished = true;
+            clearInterval(state.timerId);
+
+            const elapsedMinutes = state.startTime ? (Date.now() - state.startTime) / 60000 : state.duration / 60;
+            const totalCorrect = state.accumulatedCorrectChars + state.correctChars;
+            const totalTypedAll = state.accumulatedTotalTyped + state.totalTyped;
+            const totalMistakesAll = state.accumulatedMistakes + state.mistakes;
+
+            const finalWpm = Math.max(0, Math.round((totalCorrect / 5) / (elapsedMinutes > 0 ? elapsedMinutes : 1)));
+            const finalAcc = totalTypedAll > 0 ? Math.max(0, Math.round((totalCorrect / totalTypedAll) * 100)) : 100;
+
+            const typedSubstr = state.passageText.substring(0, state.currentIndex);
+            const words = typedSubstr.trim().split(/\s+/);
+            const targetWords = state.passageText.trim().split(/\s+/);
+            let correctWordsCount = state.accumulatedCorrectWords;
+            const currentPageWords = typingPassage.querySelectorAll('.word');
+            currentPageWords.forEach(word => {
+                const chars = Array.from(word.querySelectorAll('.char')).filter(char => !char.classList.contains('space-char'));
+                if (chars.length > 0 && chars.every(char => char.classList.contains('correct'))) correctWordsCount++;
+            });
+
+            resWpm.textContent = finalWpm;
+            resAcc.textContent = `${finalAcc}%`;
+            resWords.textContent = correctWordsCount;
+            resMistakes.textContent = totalMistakesAll;
+            resMode.textContent = `${state.difficulty === 'normal' ? 'Normal' : 'Advance'} • ${state.duration}s`;
+
+            resultsOverlay.classList.add('visible');
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (!Array.isArray(passagesData[state.difficulty]) || !passagesData[state.difficulty].length) return;
+            initAudio();
+            if (state.isFinished) {
+                if (e.key === 'Enter' || e.key === 'Escape') resetTest();
+                return;
+            }
+
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                typingWrapper.focus();
+                if (!state.isStarted) startTimer();
+                else if (e.shiftKey) resetTest();
+                return;
+            }
+
+            if (e.key === 'Escape') {
+                resetTest();
+                return;
+            }
+
+            if (!state.isStarted && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                startTimer();
+            }
+
+            if (!state.isStarted) return;
+
+
+            if (e.key === 'Backspace') {
+                e.preventDefault();
+                if (state.currentIndex <= 0) return;
+
+                playKeySound('backspace');
+                if (state.currentIndex > 0) {
+                    charSpans[state.currentIndex].classList.remove('current');
+                    state.currentIndex--;
+                    if (state.passageText[state.currentIndex] === ' ') state.currentWordIndex = Math.max(0, state.currentWordIndex - 1);
+                    const targetSpan = charSpans[state.currentIndex];
+                    if (targetSpan.classList.contains('incorrect')) state.mistakes = Math.max(0, state.mistakes - 1);
+                    else if (targetSpan.classList.contains('correct')) state.correctChars = Math.max(0, state.correctChars - 1);
+                    state.totalTyped = Math.max(0, state.totalTyped - 1);
+
+                    targetSpan.className = targetSpan.classList.contains('space-char') ? 'char space-char current' : 'char current';
+                    updateWordUnderlineStates();
+                    updateLiveStats();
+                }
+                return;
+            }
+
+            if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                e.preventDefault();
+                playKeySound(e.key === ' ' ? 'space' : 'normal');
+
+                if (state.currentIndex >= charSpans.length) {
+                    loadNewPassage(true);
+                    return;
+                }
+
+                const currentSpan = charSpans[state.currentIndex];
+                const expectedChar = state.passageText[state.currentIndex];
+
+                currentSpan.classList.remove('current');
+                state.totalTyped++;
+
+                if (e.key === expectedChar) {
+                    currentSpan.classList.add('correct');
+                    state.correctChars++;
+                } else {
+                    currentSpan.classList.add('incorrect');
+                    state.mistakes++;
+                }
+
+                if (currentSpan.classList.contains('space-char')) state.currentWordIndex++;
+                state.currentIndex++;
+
+                if (state.currentIndex < charSpans.length) {
+                    charSpans[state.currentIndex].classList.add('current');
+
+                } else {
+                    loadNewPassage(true);
+                }
+
+                updateWordUnderlineStates();
+                updateLiveStats();
+            }
+        });
+
+        typingWrapper.addEventListener('click', () => {
+            if (!Array.isArray(passagesData[state.difficulty]) || !passagesData[state.difficulty].length) {
+                fetchPassages(state.difficulty);
+                return;
+            }
+            initAudio();
+            if (!state.isStarted && !state.isFinished) startTimer();
+        });
+
+        difficultySelect.addEventListener('change', (e) => {
+            state.difficulty = e.target.value === 'advance' ? 'advance' : 'normal';
+            resetTest(false);
+            fetchPassages(state.difficulty);
+        });
+
+        durationSelect.addEventListener('change', (e) => {
+            state.duration = parseInt(e.target.value, 10);
+            state.timeLeft = state.duration;
+            resetTest();
+        });
+
+        soundToggle.addEventListener('click', () => {
+            initAudio();
+            state.soundEnabled = !state.soundEnabled;
+            soundToggle.classList.toggle('active', state.soundEnabled);
+            soundStatus.textContent = state.soundEnabled ? 'On' : 'Off';
+        });
+
+        resRestartBtn.addEventListener('click', resetTest);
+
+        fetchPassages('normal');
+    </script>
+</body>
+</html>
